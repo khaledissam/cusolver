@@ -85,7 +85,7 @@ int main()
     // check results
     cudaMemcpy(h_B, d_B, n*sizeof(double), cudaMemcpyDeviceToHost);
     for(int i=1; i<n; i++) {
-	if(h_B[i] != h_B[0]) {
+	if(abs(h_B[i] - h_B[0])>1E-7) {
 	    cerr<<"wrong answer, B["<<i<<"] = "<<h_B[i]<<" , B[0] = "<<h_B[0]<<"\n";
 	    return -1;
 	}
